@@ -11,19 +11,8 @@ import os
 import collections
 import argparse
 
-# Change into the program directory (so we know where our django code is at)
-path = os.path.dirname(sys.argv[0])
-if (path):
-    os.chdir(path)
-
-# Setup the environment for django, so we can use the object model code for
-# interfacing with the database.
-os.environ["DJANGO_SETTINGS_MODULE"] = "spectrumweb.settings"
-
-site.addsitedir("spectrumweb")
-import spectrumweb, spectrumweb.settings
-
-django.setup()
+import bootstrap
+bootstrap.setup_django()
 
 from scan.models import ScanSession, SnapshotInfo, ScanData
 
